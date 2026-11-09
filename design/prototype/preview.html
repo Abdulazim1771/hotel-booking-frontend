@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STILL Hotel · Design prototype</title>
+  <link rel="stylesheet" href="preview.css">
+  <script src="preview.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="wordmark" type="button" data-screen="stay" aria-label="STILL Hotel home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>STILL<span class="wordmark-sub">HOTEL</span></span>
+      </button>
+      <nav class="main-nav" aria-label="Guest navigation">
+        <button type="button" data-screen="stay" aria-current="page">The hotel</button>
+        <button type="button" data-screen="rooms">Rooms</button>
+        <button type="button" data-screen="bookings">My bookings</button>
+      </nav>
+      <button type="button" class="button button-outline view-switch" data-screen="staff">Staff view <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div id="stay">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow hero-kicker"><span></span> A boutique hotel</p>
+          <h1 id="hero-title" tabindex="-1">A quieter<br><em>kind of stay.</em></h1>
+          <p>Thoughtful rooms, slow mornings, and a place to feel at home.</p>
+        </div>
+        <figure class="hero-photo">
+          <img src="assets/atrium.jpg" alt="Sunlight across a curved staircase and lounge in the hotel atrium" fetchpriority="high">
+          <figcaption><span>01</span> The atrium</figcaption>
+        </figure>
+      </section>
+
+      <div class="page-width booking-wrap">
+        <form id="availability" class="availability" aria-label="Check room availability" novalidate>
+          <label for="check-in">Check-in <input type="date" id="check-in" required></label>
+          <label for="check-out">Check-out <input type="date" id="check-out" required></label>
+          <label for="guests">Guests
+            <select id="guests">
+              <option value="1">1 guest</option>
+              <option value="2" selected>2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4 guests</option>
+            </select>
+          </label>
+          <button class="button button-primary search-button" type="submit">Check availability <span aria-hidden="true">↗</span></button>
+          <p id="date-error" class="form-error" role="alert" hidden></p>
+        </form>
+      </div>
+
+      <section id="rooms" class="page-width rooms" aria-labelledby="rooms-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow section-kicker"><span></span> Find your room</p>
+            <h2 id="rooms-title" tabindex="-1">Room to unwind.</h2>
+          </div>
+          <p id="availability-summary" class="section-note" aria-live="polite">Three ways to stay. Pay at the hotel.</p>
+        </div>
+        <div class="room-grid" id="room-grid"></div>
+      </section>
+    </div>
+
+    <section class="page-width subpage" id="bookings" aria-labelledby="bookings-title" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow section-kicker"><span></span> Guest area</p>
+          <h1 class="page-title" id="bookings-title" tabindex="-1">My bookings</h1>
+        </div>
+        <button class="button button-outline" type="button" data-screen="rooms">Find a room <span aria-hidden="true">↗</span></button>
+      </div>
+      <p class="subpage-intro">See your stay details and manage upcoming reservations.</p>
+      <div id="booking-list" aria-live="polite"></div>
+    </section>
+
+    <section class="page-width subpage" id="staff" aria-labelledby="staff-title" hidden>
+      <div class="staff-banner">
+        <p class="eyebrow hero-kicker"><span></span> Hotel operations</p>
+        <h1 class="page-title" id="staff-title" tabindex="-1">Staff dashboard</h1>
+        <p>Review arrivals and manage nightly rates.</p>
+      </div>
+      <div class="staff-nav" aria-label="Staff dashboard sections">
+        <button type="button" data-staff="arrivals" aria-pressed="true">Arrivals</button>
+        <button type="button" data-staff="rates" aria-pressed="false">Room rates</button>
+      </div>
+      <section id="arrivals" class="staff-panel" aria-labelledby="arrivals-title">
+        <div class="section-heading staff-heading">
+          <h2 id="arrivals-title">Arrivals</h2>
+          <label for="arrival-date">Arrival date <input type="date" id="arrival-date" required></label>
+        </div>
+        <div id="arrival-list" aria-live="polite"></div>
+      </section>
+      <section id="rates" class="staff-panel" aria-labelledby="rates-title" hidden>
+        <div class="section-heading staff-heading">
+          <div>
+            <h2 id="rates-title">Nightly rates</h2>
+            <p class="section-note">Updates apply to future bookings.</p>
+          </div>
+        </div>
+        <form id="rate-form">
+          <div id="rate-fields" class="rate-fields"></div>
+          <button class="button button-primary" type="submit">Save rates <span aria-hidden="true">↗</span></button>
+          <p id="rate-feedback" role="status"></p>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-width footer-inner"><strong>STILL HOTEL</strong><span>Single-hotel booking · Design prototype</span></div>
+  </footer>
+
+  <dialog id="booking-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-content" id="dialog-content"></div>
+  </dialog>
+</body>
+</html>
