@@ -18,8 +18,8 @@ const rooms = [
 ];
 
 const reservations = [
-  { id: 'STL-1001', room: rooms[0], guest: 'Alex Rivera', checkIn: demoCheckIn, checkOut: demoCheckOut, guests: 2, total: 250, status: 'Confirmed' },
-  { id: 'STL-1002', room: rooms[1], guest: 'Sam Chen', checkIn: demoCheckIn, checkOut: demoCheckOut, guests: 2, total: 330, status: 'Confirmed' },
+  { id: 'HB-1001', room: rooms[0], guest: 'Alex Rivera', checkIn: demoCheckIn, checkOut: demoCheckOut, guests: 2, total: 250, status: 'Confirmed' },
+  { id: 'HB-1002', room: rooms[1], guest: 'Sam Chen', checkIn: demoCheckIn, checkOut: demoCheckOut, guests: 2, total: 330, status: 'Confirmed' },
 ];
 
 let stay = { checkIn: demoCheckIn, checkOut: demoCheckOut, guests: 2, nights: 2 };
@@ -182,10 +182,10 @@ function confirmReservation() {
       <button class="button button-primary" type="button" data-dialog="rooms">Back to rooms</button>`);
     return;
   }
-  const id = `STL-${1001 + reservations.length}`;
+  const id = `HB-${1001 + reservations.length}`;
   reservations.push({ id, room: pendingRoom, guest: 'Demo guest', owner: true, ...stay, total: pendingRoom.rate * stay.nights, status: 'Confirmed' });
   renderRooms();
-  showDialog('Booking confirmed', 'See you at STILL.', `
+  showDialog('Booking confirmed', 'We look forward to your stay.', `
     <p>Your booking reference is <strong>${id}</strong>.</p>
     <p>${pendingRoom.name} · ${formatDate(stay.checkIn)} to ${formatDate(stay.checkOut)} · ${partyLabel(stay.guests)}</p>
     <p class="dialog-note">Your total is ${formatPrice(pendingRoom.rate * stay.nights)}, payable at the hotel.</p>
